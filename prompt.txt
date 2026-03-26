@@ -1,0 +1,304 @@
+You are a Senior Full-Stack Architect.
+
+Build a production-ready, industry-level Bug Tracker / Issue Tracker Web Application 
+(similar to Jira / Linear) using the MERN stack.
+
+The application must be modern, animated, scalable, secure, and follow clean architecture principles.
+
+====================================================
+🎯 CORE REQUIREMENTS
+====================================================
+
+The application must allow teams to:
+
+1. User Authentication (JWT-based)
+2. Create and manage projects
+3. Invite/add team members to projects
+4. Create issues (bugs / tasks / features)
+5. Assign tickets to project members
+6. Drag-and-drop Kanban board (To Do, In Progress, Done)
+7. Threaded comments per ticket
+8. Filter & search tickets
+9. Edit/Delete tickets (permission-based)
+10. Role-based access control (Admin, Manager, Developer, Viewer)
+11. Optional: Upload screenshots as attachments
+
+====================================================
+🧰 TECH STACK (STRICTLY FOLLOW)
+====================================================
+
+FRONTEND:
+- React (Vite)
+- Tailwind CSS
+- Framer Motion (for animations)
+- React Router DOM
+- Axios
+- React Hook Form + Zod validation
+- React Beautiful DnD (or dnd-kit)
+- Context API (or Redux Toolkit if needed)
+- React Hot Toast
+- Heroicons or Lucide icons
+
+BACKEND:
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- JWT authentication
+- bcrypt
+- Helmet
+- CORS
+- dotenv
+- Multer (for attachments)
+- Optional: Socket.io for real-time updates
+
+====================================================
+🏗️ CLEAN FOLDER STRUCTURE
+====================================================
+
+Use scalable, production-ready structure:
+
+ROOT
+│
+├── client/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── store.js
+│   │   │   └── api.js
+│   │   ├── components/
+│   │   │   ├── layout/
+│   │   │   ├── ui/
+│   │   │   ├── modals/
+│   │   │   ├── forms/
+│   │   │   └── kanban/
+│   │   ├── pages/
+│   │   │   ├── Auth/
+│   │   │   ├── Dashboard/
+│   │   │   ├── Project/
+│   │   │   └── NotFound.jsx
+│   │   ├── hooks/
+│   │   ├── context/
+│   │   ├── utils/
+│   │   ├── constants/
+│   │   ├── animations/
+│   │   ├── routes/
+│   │   └── main.jsx
+│   └── tailwind.config.js
+│
+├── server/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
+│   ├── uploads/
+│   ├── server.js
+│   └── app.js
+│
+└── README.md
+
+====================================================
+🗄️ DATABASE MODELS
+====================================================
+
+User:
+- name
+- email
+- password (hashed)
+- role (admin, manager, developer, viewer)
+- avatar (optional)
+- timestamps
+
+Project:
+- title
+- description
+- createdBy
+- teamMembers (array of user references)
+- timestamps
+
+Ticket:
+- title
+- description
+- priority (Low, Medium, High, Critical)
+- status (Todo, InProgress, Done)
+- assignee (user ref)
+- projectId (ref)
+- attachments (array)
+- timestamps
+
+Comment:
+- ticketId (ref)
+- userId (ref)
+- text
+- parentComment (for threading)
+- timestamps
+
+====================================================
+🔐 AUTHENTICATION
+====================================================
+
+- JWT-based authentication
+- Access & Refresh tokens
+- Protected routes middleware
+- Role-based authorization middleware
+- Secure password hashing using bcrypt
+- Store JWT in HTTP-only cookies (preferred)
+
+====================================================
+🎨 UI / UX REQUIREMENTS (VERY IMPORTANT)
+====================================================
+
+Design must be:
+
+- Modern SaaS style
+- Inspired by Linear, Jira, Notion
+- Dark + Light mode toggle
+- Glassmorphism cards
+- Smooth page transitions (Framer Motion)
+- Micro-interactions on hover
+- Animated modals
+- Skeleton loaders
+- Toast notifications
+- Responsive (mobile-first)
+- Sidebar navigation with collapse animation
+- Animated Kanban drag transitions
+- Sticky headers
+- Clean typography
+
+Use Tailwind best practices.
+Use reusable UI components.
+Use consistent spacing and design tokens.
+
+====================================================
+📊 DASHBOARD FEATURES
+====================================================
+
+Dashboard page should show:
+
+- Total Projects
+- Total Issues
+- Issues by Status (small chart)
+- Issues by Priority
+- Recently updated tickets
+
+Optional:
+- Use Recharts or Chart.js
+
+====================================================
+🗂️ KANBAN BOARD
+====================================================
+
+- 3 Columns: Todo, In Progress, Done
+- Drag and Drop functionality
+- Optimistic UI updates
+- Auto-save status on drop
+- Smooth animations
+- Ticket card shows:
+    - Title
+    - Priority badge
+    - Assignee avatar
+    - Comment count
+    - Attachment icon
+
+====================================================
+🔎 FILTERING & SEARCH
+====================================================
+
+Add:
+
+- Search by keyword
+- Filter by:
+    - Status
+    - Priority
+    - Assignee
+- Backend query support
+- Debounced search input
+
+====================================================
+💬 COMMENTS SYSTEM
+====================================================
+
+- Threaded comments
+- Mention users (@username)
+- Timestamp formatting
+- Animated appearance
+- Edit/delete own comments
+
+====================================================
+📎 ATTACHMENTS
+====================================================
+
+- Upload screenshots
+- Store in /uploads
+- Show preview in ticket detail
+- File type validation
+- Limit file size
+
+====================================================
+🛡️ SECURITY BEST PRACTICES
+====================================================
+
+- Input validation (Zod or express-validator)
+- Sanitize inputs
+- Rate limiting
+- Secure headers (Helmet)
+- Proper error handling middleware
+- Centralized error responses
+
+====================================================
+⚡ PERFORMANCE OPTIMIZATION
+====================================================
+
+- Lazy loading routes
+- Memoized components
+- Optimized queries (populate wisely)
+- Debounced search
+- Pagination for tickets
+
+====================================================
+🚀 DEPLOYMENT READY
+====================================================
+
+- Environment variables setup
+- Separate production configs
+- Ready for:
+    - Backend → Render / Railway
+    - Frontend → Vercel / Netlify
+- MongoDB Atlas connection
+- CORS configured for production
+
+====================================================
+📘 README MUST INCLUDE
+====================================================
+
+- Setup instructions
+- Environment variables
+- API documentation
+- Feature list
+- Screenshots section
+- Live demo placeholder
+- Folder explanation
+
+====================================================
+🎯 FINAL DELIVERABLE
+====================================================
+
+Generate complete working code for:
+
+- Backend (all routes, models, controllers, middleware)
+- Frontend (fully styled, animated UI)
+- Authentication flow
+- Kanban board
+- Filters
+- Comments
+- Role-based access
+- Attachment upload
+
+Code must be clean, modular, readable, and scalable.
+
+Follow best industry practices.
+No placeholder stubs.
+Make it production-grade.
+
+Start with backend setup first, then frontend.
+Generate code step by step in structured order.
